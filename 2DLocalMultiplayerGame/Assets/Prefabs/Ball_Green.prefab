@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -8134761713290471279}
   - component: {fileID: 5665035284660355357}
   m_Layer: 8
-  m_Name: Ball1
+  m_Name: Ball_Green
   m_TagString: Ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0.6207221, b: 0, a: 1}
+  m_Color: {r: 0.09620404, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -168,6 +168,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e16f6592e91a06240a4b0a4a405f8375, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Ball
+  ballType: 2
   isHeld: 0
   holder: {fileID: 0}
+  lastHolder: {fileID: 0}
+  damage: 20
   cooldownTime: 0.5

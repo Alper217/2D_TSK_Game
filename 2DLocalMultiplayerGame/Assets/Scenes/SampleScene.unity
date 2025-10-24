@@ -1089,8 +1089,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c154fc8a1dd668549935793d0481e96e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BallSpawner
-  ballPrefab: {fileID: 6531232684067823273, guid: adba0f27355939841b463404a86423f4, type: 3}
-  initialBallCountPerSide: 2
+  ballPrefabs:
+  - {fileID: 6531232684067823273, guid: adba0f27355939841b463404a86423f4, type: 3}
+  - {fileID: 6531232684067823273, guid: ea94cdb3d2d70da438985be6e96de727, type: 3}
+  - {fileID: 6531232684067823273, guid: d270c5e5469966248af4eba5ca7adf63, type: 3}
+  - {fileID: 6531232684067823273, guid: 52a335d688716bb419ebe4adbd4ec592, type: 3}
+  countPerPrefab: 2
   leftAreaCenter: {x: -3.72, y: -0.1}
   leftAreaSize: {x: 7.08, y: 6.56}
   rightAreaCenter: {x: 3.72, y: -0.1}
@@ -1128,10 +1132,11 @@ MonoBehaviour:
   totalHeight: 7
   gameManager: {fileID: 1213807481}
   partColors:
-  - {r: 1, g: 0, b: 0.365098, a: 0}
+  - {r: 1, g: 0, b: 0.5408287, a: 0}
   - {r: 0.5540875, g: 1, b: 0, a: 0}
-  - {r: 0.61384964, g: 0, b: 1, a: 0}
+  - {r: 0, g: 0.29319787, b: 1, a: 0}
   verticalOffset: -0.1
+  partTypes: 010000000200000003000000
   activeParts: []
 --- !u!114 &1213807481
 MonoBehaviour:
@@ -1148,6 +1153,8 @@ MonoBehaviour:
   playerLeftScore: 0
   playerRightScore: 0
   scoreToWin: 2
+  playerLeftLives: 3
+  playerRightLives: 3
   ballSpawner: {fileID: 1213807478}
   playerLeft: {fileID: 396445787}
   playerRight: {fileID: 132496629}

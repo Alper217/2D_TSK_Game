@@ -1,10 +1,9 @@
-// ShieldPart.cs
 using UnityEngine;
 
 public class ShieldPart : MonoBehaviour
 {
-    public TargetOrb orb; // Bu parçaya ait hedef dairesi
-    public Transform lineVisual; // Çizgi görselinin TRANSFORM'u
+    public TargetOrb orb;
+    public Transform lineVisual;
 
     [HideInInspector] public float topBoundary;
     [HideInInspector] public float bottomBoundary;
@@ -14,15 +13,16 @@ public class ShieldPart : MonoBehaviour
         topBoundary = top;
         bottomBoundary = bottom;
 
-        float height = top - bottom; // Parçanýn toplam yüksekliði
+        float height = top - bottom; // Yeni yükseklik
         float centerY = bottom + (height / 2);
 
         // 1. Ana objeyi segmentin merkezine taþý
         transform.position = new Vector3(0, centerY, 0);
 
-        // 2. ÇÝZGÝYÝ UZAT (BOÞLUKLARI KAPATAN KOD)
+        // 2. ÇÝZGÝYÝ UZAT (YENÝDEN BOYUTLANMA BURADA OLUR)
         if (lineVisual != null)
         {
+            // Çizginin Y-ölçeðini, parçanýn yeni yüksekliðine eþitler
             lineVisual.localScale = new Vector3(lineVisual.localScale.x, height, lineVisual.localScale.z);
         }
 
@@ -34,19 +34,13 @@ public class ShieldPart : MonoBehaviour
         }
     }
 
-    // YENÝ: Hem dairenin hem de çizginin rengini ayarlar
     public void SetColor(Color newColor)
     {
-        // ALFA DÜZELTMESÝ: Rengin þeffaflýðýný 1 (görünür) yap
         newColor.a = 1f;
-
-        // Orb'un rengini ayarla
         if (orb != null)
         {
-            orb.SetColor(newColor); // Orb'un kendi SetColor'ýný çaðýr
+            orb.SetColor(newColor);
         }
-
-        // Çizginin (stick) rengini ayarla
         if (lineVisual != null)
         {
             SpriteRenderer lineRenderer = lineVisual.GetComponent<SpriteRenderer>();
@@ -54,6 +48,13 @@ public class ShieldPart : MonoBehaviour
             {
                 lineRenderer.color = newColor;
             }
+        }
+    }
+    public void SetType(ElementType type)
+    {
+        if (orb != null)
+        {
+            orb.orbType = type;
         }
     }
 }

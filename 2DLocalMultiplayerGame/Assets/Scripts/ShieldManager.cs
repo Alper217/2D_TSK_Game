@@ -9,9 +9,10 @@ public class ShieldManager : MonoBehaviour
     public float totalHeight = 8f;
     public GameManager gameManager;
     public Color[] partColors;
+    public float verticalOffset = 0f; // Elle kaydýrma
 
-    // YENÝ: Elle aþaðý/yukarý kaydýrmak için
-    public float verticalOffset = 0f;
+    // YENÝ: Parçalarýn tiplerini belirleyen dizi
+    public ElementType[] partTypes;
 
     public List<ShieldPart> activeParts = new List<ShieldPart>();
 
@@ -19,7 +20,6 @@ public class ShieldManager : MonoBehaviour
     {
         if (gameManager == null)
             gameManager = FindObjectOfType<GameManager>();
-
         InitializeShields(initialPartCount);
     }
 
@@ -28,17 +28,15 @@ public class ShieldManager : MonoBehaviour
         foreach (ShieldPart part in activeParts) { Destroy(part.gameObject); }
         activeParts.Clear();
 
-        float segmentHeight = totalHeight / count;
-
-        // DÜZELTME: Baþlangýç pozisyonuna offset'i ekle
+        float segmentHeight = totalHeight / count; // 1. Deðiþkenin doðru adý bu
         float currentY_Bottom = (-totalHeight / 2) + verticalOffset;
 
         for (int i = 0; i < count; i++)
         {
             float partTop = currentY_Bottom + segmentHeight;
             float partBottom = currentY_Bottom;
+            // DÜZELTME: 'height' yerine 'segmentHeight' kullanýlmalý
             float partCenterY = currentY_Bottom + (segmentHeight / 2);
-
             Vector3 spawnPos = new Vector3(0, partCenterY, 0);
             GameObject partObj = Instantiate(shieldPartPrefab, spawnPos, Quaternion.identity);
             partObj.transform.SetParent(this.transform);
@@ -47,34 +45,44 @@ public class ShieldManager : MonoBehaviour
             part.SetBoundaries(partTop, partBottom);
             part.orb.manager = this;
 
+            // Renkleri ata
             if (partColors.Length > i)
             {
                 part.SetColor(partColors[i]);
             }
 
+            // YENÝ: Tipleri ata
+            if (partTypes.Length > i)
+            {
+                part.SetType(partTypes[i]);
+            }
+
+            // DÜZELTME: 'activeBalls' yerine 'activeParts' olmalý
             activeParts.Add(part);
             currentY_Bottom += segmentHeight;
         }
     }
 
+    // HEDEF YOK OLDUÐUNDA ÇAÐRILIR
     public void OnTargetDestroyed(ShieldPart destroyedPart, Transform shootingPlayer)
     {
         activeParts.Remove(destroyedPart);
         Destroy(destroyedPart.gameObject);
-        gameManager.AddPoint(shootingPlayer);
 
+        gameManager.AddPoint(shootingPlayer); // Puan ekle
+
+        // YENÝDEN BOYUTLANMAYI ÇAÐIR
         if (activeParts.Count > 0)
         {
             RebalanceShields();
         }
     }
 
+    // KALANLARI YENÝDEN BOYUTLANDIR
     void RebalanceShields()
     {
         int count = activeParts.Count;
         float segmentHeight = totalHeight / count;
-
-        // DÜZELTME: Baþlangýç pozisyonuna offset'i ekle
         float currentY_Bottom = (-totalHeight / 2) + verticalOffset;
 
         for (int i = 0; i < count; i++)
@@ -82,6 +90,7 @@ public class ShieldManager : MonoBehaviour
             ShieldPart part = activeParts[i];
             float partTop = currentY_Bottom + segmentHeight;
             float partBottom = currentY_Bottom;
+
             part.SetBoundaries(partTop, partBottom);
 
             currentY_Bottom += segmentHeight;

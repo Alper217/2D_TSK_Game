@@ -3,20 +3,22 @@ using UnityEngine;
 
 public class TargetOrb : MonoBehaviour
 {
+    // YENÝ: Bu hedefin element tipi
+    public ElementType orbType;
+
     public float maxHealth = 100f;
     private float currentHealth;
     public float moveSpeed = 2f;
 
     [HideInInspector] public ShieldManager manager;
-    [HideInInspector] public ShieldPart myPart; // Ebeveyn parçasý
+    [HideInInspector] public ShieldPart myPart;
 
     private bool movingUp = true;
     private Vector3 initialScale;
-    private SpriteRenderer orbRenderer; // Renk için
+    private SpriteRenderer orbRenderer;
 
     void Awake()
     {
-        // Renk deðiþtirebilmek için SpriteRenderer'ý al
         orbRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -33,12 +35,8 @@ public class TargetOrb : MonoBehaviour
 
     void MoveUpDown()
     {
-        if (myPart == null) return; // Henüz atanmadýysa bekle
-
-        // Yeni Y pozisyonunu hesapla
+        if (myPart == null) return;
         float newY = transform.position.y + (movingUp ? 1 : -1) * moveSpeed * Time.deltaTime;
-
-        // Sýnýrlara ulaþtý mý?
         if (newY >= myPart.topBoundary)
         {
             newY = myPart.topBoundary;
@@ -49,7 +47,6 @@ public class TargetOrb : MonoBehaviour
             newY = myPart.bottomBoundary;
             movingUp = true;
         }
-
         transform.position = new Vector3(myPart.transform.position.x, newY, 0);
     }
 
@@ -62,16 +59,15 @@ public class TargetOrb : MonoBehaviour
         if (currentHealth <= 0)
         {
             currentHealth = 0;
+            // YENÝDEN BOYUTLANMAYI BAÞLAT (ÝKÝNCÝ TEST ÝSTEÐÝN)
             manager.OnTargetDestroyed(myPart, shootingPlayer);
         }
     }
 
-    // YENÝ: Rengi ayarlar ve Alpha'yý 1 yapar
     public void SetColor(Color newColor)
     {
         if (orbRenderer != null)
         {
-            // ALFA DÜZELTMESÝ: Rengin þeffaflýðýný 1 (görünür) yap
             newColor.a = 1f;
             orbRenderer.color = newColor;
         }

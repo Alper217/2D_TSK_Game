@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 public class BallSpawner : MonoBehaviour
 {
-    public GameObject ballPrefab;
-    // DÜZELTME: Oyun baþýnda sadece 1 top spawn olmalý
-    public int initialBallCountPerSide = 1;
+    // GÜNCELLENDÝ: 1 prefab yerine 4 prefab
+    public GameObject[] ballPrefabs; // 4 prefab (Pink, Green, Blue, Normal)
+    public int countPerPrefab = 2; // Her prefab'dan kaç tane spawn edilecek
 
     public Vector2 leftAreaCenter = new Vector2(-4f, 0f);
     public Vector2 leftAreaSize = new Vector2(7f, 6f);
@@ -19,28 +19,63 @@ public class BallSpawner : MonoBehaviour
     {
         SpawnInitialBalls();
     }
-
-    void SpawnInitialBalls() // Fonksiyon adý daha açýklayýcý
+    void SpawnInitialBalls()
     {
-        // Sol sahada baþlangýç topu
-        SpawnBallsInArea(leftAreaCenter, leftAreaSize, initialBallCountPerSide);
-
-        // Sað sahada baþlangýç topu
-        SpawnBallsInArea(rightAreaCenter, rightAreaSize, initialBallCountPerSide);
+        // Sol sahada tüm prefab'lardan spawn et
+        SpawnAllPrefabs(leftAreaCenter, leftAreaSize);
+        // Sað sahada tüm prefab'lardan spawn et
+        SpawnAllPrefabs(rightAreaCenter, rightAreaSize);
     }
 
-    // BU FONKSÝYON PUBLIC OLMALI (GameManager eriþebilsin)
-    public void SpawnBallsInArea(Vector2 center, Vector2 size, int count)
+    // YENÝ: Verilen alanda tüm prefab'lardan 'countPerPrefab' kadar spawn eder
+    void SpawnAllPrefabs(Vector2 center, Vector2 size)
     {
-        for (int i = 0; i < count; i++)
+        foreach (GameObject prefab in ballPrefabs)
         {
-            float randomX = Random.Range(center.x - size.x / 2, center.x + size.x / 2);
-            float randomY = Random.Range(center.y - size.y / 2, center.y + size.y / 2);
-            Vector3 spawnPos = new Vector3(randomX, randomY, 0);
-
-            GameObject ball = Instantiate(ballPrefab, spawnPos, Quaternion.identity);
-            activeBalls.Add(ball); // Listeye ekle
+            for (int i = 0; i < countPerPrefab; i++)
+            {
+                SpawnSingleBall(prefab, center, size);
+            }
         }
+    }
+
+    // YENÝ: Verilen alanda TEK bir top spawn eder
+    void SpawnSingleBall(GameObject prefab, Vector2 center, Vector2 size)
+    {
+        if (prefab == null) return;
+
+        float randomX = Random.Range(center.x - size.x / 2, center.x + size.x / 2);
+        float randomY = Random.Range(center.y - size.y / 2, center.y + size.y / 2);
+        Vector3 spawnPos = new Vector3(randomX, randomY, 0);
+
+        GameObject ball = Instantiate(prefab, spawnPos, Quaternion.identity);
+        activeBalls.Add(ball); // Listeye ekle
+    }
+
+    // YENÝ: GameManager'ýn belirli bir tipi yeniden doðurmak için çaðýrdýðý fonksiyon
+    public void RespawnSpecificBall(ElementType ballType, Vector2 center, Vector2 size)
+    {
+        GameObject prefabToSpawn = GetPrefabForType(ballType);
+        if (prefabToSpawn != null)
+        {
+            SpawnSingleBall(prefabToSpawn, center, size);
+        }
+    }
+
+    // YENÝ: Element tipine göre doðru prefab'ý bulur
+    GameObject GetPrefabForType(ElementType ballType)
+    {
+        foreach (GameObject prefab in ballPrefabs)
+        {
+            Ball ballScript = prefab.GetComponent<Ball>();
+            // Prefab'ýn üzerindeki Ball script'inin tipini kontrol et
+            if (ballScript != null && ballScript.ballType == ballType)
+            {
+                return prefab;
+            }
+        }
+        Debug.LogWarning("Bu tip için prefab bulunamadý: " + ballType);
+        return null;
     }
 
     public void RemoveBall(GameObject ball)
@@ -49,7 +84,6 @@ public class BallSpawner : MonoBehaviour
         {
             activeBalls.Remove(ball);
         }
-        // Topu her zaman yok et
         Destroy(ball);
     }
 
