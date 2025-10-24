@@ -1068,6 +1068,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1213807479}
   - component: {fileID: 1213807478}
+  - component: {fileID: 1213807481}
+  - component: {fileID: 1213807480}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1088,7 +1090,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BallSpawner
   ballPrefab: {fileID: 6531232684067823273, guid: adba0f27355939841b463404a86423f4, type: 3}
-  ballCountPerSide: 5
+  initialBallCountPerSide: 2
   leftAreaCenter: {x: -3.72, y: -0.1}
   leftAreaSize: {x: 7.08, y: 6.56}
   rightAreaCenter: {x: 3.72, y: -0.1}
@@ -1109,6 +1111,46 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1213807480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1213807477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1fbaa76d2cfc0043b477c574951cfb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShieldManager
+  shieldPartPrefab: {fileID: 714864189062338786, guid: 8cf489beefd279d4284084da0fe5b5e5, type: 3}
+  initialPartCount: 3
+  totalHeight: 7
+  gameManager: {fileID: 1213807481}
+  partColors:
+  - {r: 1, g: 0, b: 0.365098, a: 0}
+  - {r: 0.5540875, g: 1, b: 0, a: 0}
+  - {r: 0.61384964, g: 0, b: 1, a: 0}
+  verticalOffset: -0.1
+  activeParts: []
+--- !u!114 &1213807481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1213807477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dc518d386d104f458942621b8c870fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  playerLeftScore: 0
+  playerRightScore: 0
+  scoreToWin: 2
+  ballSpawner: {fileID: 1213807478}
+  playerLeft: {fileID: 396445787}
+  playerRight: {fileID: 132496629}
 --- !u!1 &1436129473
 GameObject:
   m_ObjectHideFlags: 0
@@ -1446,7 +1488,7 @@ Transform:
   m_GameObject: {fileID: 1970334500}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.92128, y: -8.49253, z: 0}
+  m_LocalPosition: {x: 8.94, y: -8.49253, z: 0}
   m_LocalScale: {x: 0.08528179, y: 7.049079, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

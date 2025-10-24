@@ -1,16 +1,15 @@
+// BallSpawner.cs
 using UnityEngine;
 using System.Collections.Generic;
 
 public class BallSpawner : MonoBehaviour
 {
-    public GameObject ballPrefab;           // Ball prefab'ý buraya atanacak
-    public int ballCountPerSide = 10;       // Her tarafta kaç top spawn olacak
+    public GameObject ballPrefab;
+    // DÜZELTME: Oyun baþýnda sadece 1 top spawn olmalý
+    public int initialBallCountPerSide = 1;
 
-    // Sol saha spawn alaný
     public Vector2 leftAreaCenter = new Vector2(-4f, 0f);
     public Vector2 leftAreaSize = new Vector2(7f, 6f);
-
-    // Sað saha spawn alaný
     public Vector2 rightAreaCenter = new Vector2(4f, 0f);
     public Vector2 rightAreaSize = new Vector2(7f, 6f);
 
@@ -18,52 +17,46 @@ public class BallSpawner : MonoBehaviour
 
     void Start()
     {
-        SpawnBalls();
+        SpawnInitialBalls();
     }
 
-    void SpawnBalls()
+    void SpawnInitialBalls() // Fonksiyon adý daha açýklayýcý
     {
-        // Sol sahada top spawn et
-        SpawnBallsInArea(leftAreaCenter, leftAreaSize, ballCountPerSide);
+        // Sol sahada baþlangýç topu
+        SpawnBallsInArea(leftAreaCenter, leftAreaSize, initialBallCountPerSide);
 
-        // Sað sahada top spawn et
-        SpawnBallsInArea(rightAreaCenter, rightAreaSize, ballCountPerSide);
+        // Sað sahada baþlangýç topu
+        SpawnBallsInArea(rightAreaCenter, rightAreaSize, initialBallCountPerSide);
     }
 
-    void SpawnBallsInArea(Vector2 center, Vector2 size, int count)
+    // BU FONKSÝYON PUBLIC OLMALI (GameManager eriþebilsin)
+    public void SpawnBallsInArea(Vector2 center, Vector2 size, int count)
     {
         for (int i = 0; i < count; i++)
         {
-            // Belirtilen alan içinde rastgele pozisyon
             float randomX = Random.Range(center.x - size.x / 2, center.x + size.x / 2);
             float randomY = Random.Range(center.y - size.y / 2, center.y + size.y / 2);
-
             Vector3 spawnPos = new Vector3(randomX, randomY, 0);
 
-            // Top'u spawn et
             GameObject ball = Instantiate(ballPrefab, spawnPos, Quaternion.identity);
-            activeBalls.Add(ball);
+            activeBalls.Add(ball); // Listeye ekle
         }
     }
 
-    // Topu listeden kaldýr (gol atýldýðýnda vs.)
     public void RemoveBall(GameObject ball)
     {
         if (activeBalls.Contains(ball))
         {
             activeBalls.Remove(ball);
-            Destroy(ball);
         }
+        // Topu her zaman yok et
+        Destroy(ball);
     }
 
-    // Spawn alanlarýný görmek için (sadece editörde görünür)
     void OnDrawGizmos()
     {
-        // Sol alan (Mavi)
         Gizmos.color = Color.blue;
         Gizmos.DrawWireCube(leftAreaCenter, leftAreaSize);
-
-        // Sað alan (Kýrmýzý)
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(rightAreaCenter, rightAreaSize);
     }
