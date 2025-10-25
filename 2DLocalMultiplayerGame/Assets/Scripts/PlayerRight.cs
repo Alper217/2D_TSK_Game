@@ -104,8 +104,10 @@ public class PlayerRight : MonoBehaviour
             currentAimIndicator = Instantiate(aimIndicatorPrefab, transform.position, Quaternion.identity);
             currentAimIndicator.transform.SetParent(transform);
 
-            // SA?DAK? OYUNCU ???N OK SOLA BAKSIN - Scale'i tersine ?evir
-            currentAimIndicator.transform.localScale = new Vector3(-1f, 1f, 1f);
+            // SAĞDAKİ OYUNCU İÇİN OK SOLA BAKSIN - Mevcut ölçeği koruyarak yönü tersine çevir
+            Vector3 currentScale = currentAimIndicator.transform.localScale;
+            currentScale.x *= -1f; // Sadece x eksenindeki yönü ters çevir
+            currentAimIndicator.transform.localScale = currentScale;
         }
     }
 

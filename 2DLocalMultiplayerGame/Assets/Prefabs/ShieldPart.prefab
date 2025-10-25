@@ -245,6 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f51face26c2ade44197776ae88ac6614, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TargetOrb
+  orbType: 0
   maxHealth: 100
   moveSpeed: 2
   manager: {fileID: 0}

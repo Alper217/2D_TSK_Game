@@ -1,0 +1,1248 @@
+fileFormatVersion: 2
+guid: 73d315cab0362f243904fa72c846b6e3
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6331862279977605672
+    second: "trib\xFCn gif_0"
+  - first:
+      213: 5756869943955410162
+    second: "trib\xFCn gif_1"
+  - first:
+      213: -8489230274062410600
+    second: "trib\xFCn gif_2"
+  - first:
+      213: 1263616410730971354
+    second: "trib\xFCn gif_3"
+  - first:
+      213: -6949086508362329638
+    second: "trib\xFCn gif_4"
+  - first:
+      213: 1224140917592950285
+    second: "trib\xFCn gif_5"
+  - first:
+      213: 3273684767859191359
+    second: "trib\xFCn gif_6"
+  - first:
+      213: -7201220479276741975
+    second: "trib\xFCn gif_7"
+  - first:
+      213: -7075084251406482176
+    second: "trib\xFCn gif_8"
+  - first:
+      213: -6782152681117127323
+    second: "trib\xFCn gif_9"
+  - first:
+      213: -1169397881438058444
+    second: "trib\xFCn gif_10"
+  - first:
+      213: 3437913068918463575
+    second: "trib\xFCn gif_11"
+  - first:
+      213: 7696350417830172485
+    second: "trib\xFCn gif_12"
+  - first:
+      213: -5651345410112126741
+    second: "trib\xFCn gif_13"
+  - first:
+      213: -8711602260349771243
+    second: "trib\xFCn gif_14"
+  - first:
+      213: 602402205576684766
+    second: "trib\xFCn gif_15"
+  - first:
+      213: -2794452930520549219
+    second: "trib\xFCn gif_16"
+  - first:
+      213: 2900734499512176026
+    second: "trib\xFCn gif_17"
+  - first:
+      213: -7500066798635282963
+    second: "trib\xFCn gif_18"
+  - first:
+      213: -8316636174216829425
+    second: "trib\xFCn gif_19"
+  - first:
+      213: -1148169391725522885
+    second: "trib\xFCn gif_20"
+  - first:
+      213: -2011673738163535619
+    second: "trib\xFCn gif_21"
+  - first:
+      213: -5244611789398225668
+    second: "trib\xFCn gif_22"
+  - first:
+      213: -7896165967268580428
+    second: "trib\xFCn gif_23"
+  - first:
+      213: -2858598489394977127
+    second: "trib\xFCn gif_24"
+  - first:
+      213: 7537651245690787209
+    second: "trib\xFCn gif_25"
+  - first:
+      213: 9062459869106478488
+    second: "trib\xFCn gif_26"
+  - first:
+      213: -3947561322398207575
+    second: "trib\xFCn gif_27"
+  - first:
+      213: -7744227370439171538
+    second: "trib\xFCn gif_28"
+  - first:
+      213: 9159035300120546550
+    second: "trib\xFCn gif_29"
+  - first:
+      213: -5780528637613378190
+    second: "trib\xFCn gif_30"
+  - first:
+      213: 9176355931228631112
+    second: "trib\xFCn gif_31"
+  - first:
+      213: 4004798220868944841
+    second: "trib\xFCn gif_32"
+  - first:
+      213: -5108201297470551889
+    second: "trib\xFCn gif_33"
+  - first:
+      213: -5175468849268341114
+    second: "trib\xFCn gif_34"
+  - first:
+      213: 7890446649632522363
+    second: "trib\xFCn gif_35"
+  - first:
+      213: -3974042911546292648
+    second: "trib\xFCn gif_36"
+  - first:
+      213: -437620739535633737
+    second: "trib\xFCn gif_37"
+  - first:
+      213: -7308318114073729683
+    second: "trib\xFCn gif_38"
+  - first:
+      213: 2573879140114545679
+    second: "trib\xFCn gif_39"
+  - first:
+      213: -5600693487988747948
+    second: "trib\xFCn gif_40"
+  - first:
+      213: 3106731419484433054
+    second: "trib\xFCn gif_41"
+  - first:
+      213: -2960666216422361422
+    second: "trib\xFCn gif_42"
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: "trib\xFCn gif_0"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 112
+        width: 63
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82a92cc223b4fd750800000000000000
+      internalID: 6331862279977605672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "trib\xFCn gif_1"
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 112
+        width: 67
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2fcc59b76b284ef40800000000000000
+      internalID: 5756869943955410162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "trib\xFCn gif_2"
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 112
+        width: 67
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89c940a2b02303a80800000000000000
+      internalID: -8489230274062410600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "trib\xFCn gif_3"
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 112
+        width: 66
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad049fd3e64498110800000000000000
+      internalID: 1263616410730971354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "trib\xFCn gif_4"
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 112
+        width: 66
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad19a9373a2ef8f90800000000000000
+      internalID: -6949086508362329638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "trib\xFCn gif_5"
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 112
+        width: 66
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d060624cda50df010800000000000000
+      internalID: 1224140917592950285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "trib\xFCn gif_6"
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 112
+        width: 66
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3eaade93f67e6d20800000000000000
+      internalID: 3273684767859191359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "trib\xFCn gif_7"
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 112
+        width: 66
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9aa0177b020201c90800000000000000
+      internalID: -7201220479276741975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "trib\xFCn gif_8"
+      rect:
+        serializedVersion: 2
+        x: 526
+        y: 112
+        width: 66
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 005c4f6db5040dd90800000000000000
+      internalID: -7075084251406482176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "trib\xFCn gif_9"
+      rect:
+        serializedVersion: 2
+        x: 592
+        y: 112
+        width: 66
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56dec85e114f0e1a0800000000000000
+      internalID: -6782152681117127323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "trib\xFCn gif_10"
+      rect:
+        serializedVersion: 2
+        x: 658
+        y: 112
+        width: 66
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4384ac392d675cfe0800000000000000
+      internalID: -1169397881438058444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "trib\xFCn gif_11"
+      rect:
+        serializedVersion: 2
+        x: 724
+        y: 112
+        width: 66
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75cde89a8bbe5bf20800000000000000
+      internalID: 3437913068918463575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "trib\xFCn gif_12"
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 112
+        width: 66
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54752b19dedeeca60800000000000000
+      internalID: 7696350417830172485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "trib\xFCn gif_13"
+      rect:
+        serializedVersion: 2
+        x: 857
+        y: 112
+        width: 132
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be08b37aa436291b0800000000000000
+      internalID: -5651345410112126741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "trib\xFCn gif_14"
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 6
+        width: 86
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 512ac5776eb2a1780800000000000000
+      internalID: -8711602260349771243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "trib\xFCn gif_15"
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 57
+        width: 66
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed46f434d992c5800800000000000000
+      internalID: 602402205576684766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "trib\xFCn gif_16"
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 57
+        width: 67
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d98f5c68ddb1839d0800000000000000
+      internalID: -2794452930520549219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "trib\xFCn gif_17"
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 57
+        width: 66
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9dc42798aa714820800000000000000
+      internalID: 2900734499512176026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "trib\xFCn gif_18"
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 57
+        width: 67
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ded84a3dbf86ae790800000000000000
+      internalID: -7500066798635282963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "trib\xFCn gif_19"
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 6
+        width: 66
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0664a5867f559c80800000000000000
+      internalID: -8316636174216829425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "trib\xFCn gif_20"
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 57
+        width: 66
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3059308502e010f0800000000000000
+      internalID: -1148169391725522885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "trib\xFCn gif_21"
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 57
+        width: 66
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df0c7c8b4691514e0800000000000000
+      internalID: -2011673738163535619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "trib\xFCn gif_22"
+      rect:
+        serializedVersion: 2
+        x: 469
+        y: 6
+        width: 67
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cfcc71c5d556737b0800000000000000
+      internalID: -5244611789398225668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "trib\xFCn gif_23"
+      rect:
+        serializedVersion: 2
+        x: 490
+        y: 57
+        width: 66
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b37d6173ee2b6290800000000000000
+      internalID: -7896165967268580428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "trib\xFCn gif_24"
+      rect:
+        serializedVersion: 2
+        x: 556
+        y: 57
+        width: 66
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 996e424c1d73458d0800000000000000
+      internalID: -2858598489394977127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "trib\xFCn gif_25"
+      rect:
+        serializedVersion: 2
+        x: 622
+        y: 57
+        width: 66
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9851e2c2fdd1b9860800000000000000
+      internalID: 7537651245690787209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "trib\xFCn gif_26"
+      rect:
+        serializedVersion: 2
+        x: 668
+        y: 6
+        width: 66
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89d13596c3354cd70800000000000000
+      internalID: 9062459869106478488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "trib\xFCn gif_27"
+      rect:
+        serializedVersion: 2
+        x: 687
+        y: 57
+        width: 67
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a1326174e17739c0800000000000000
+      internalID: -3947561322398207575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "trib\xFCn gif_28"
+      rect:
+        serializedVersion: 2
+        x: 734
+        y: 6
+        width: 66
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e22ad1dbc3af68490800000000000000
+      internalID: -7744227370439171538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "trib\xFCn gif_29"
+      rect:
+        serializedVersion: 2
+        x: 754
+        y: 57
+        width: 67
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6fcc2fc241e6b1f70800000000000000
+      internalID: 9159035300120546550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "trib\xFCn gif_30"
+      rect:
+        serializedVersion: 2
+        x: 821
+        y: 57
+        width: 66
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 275f415a4df67cfa0800000000000000
+      internalID: -5780528637613378190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "trib\xFCn gif_31"
+      rect:
+        serializedVersion: 2
+        x: 887
+        y: 57
+        width: 66
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8407e6dd917f85f70800000000000000
+      internalID: 9176355931228631112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "trib\xFCn gif_32"
+      rect:
+        serializedVersion: 2
+        x: 953
+        y: 57
+        width: 71
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c3820873c6e39730800000000000000
+      internalID: 4004798220868944841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "trib\xFCn gif_33"
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 6
+        width: 67
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa8041ffbf50c19b0800000000000000
+      internalID: -5108201297470551889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "trib\xFCn gif_34"
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 6
+        width: 66
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 686c24d908a0d28b0800000000000000
+      internalID: -5175468849268341114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "trib\xFCn gif_35"
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 6
+        width: 66
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7084862c6f708d60800000000000000
+      internalID: 7890446649632522363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "trib\xFCn gif_36"
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 6
+        width: 66
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 856cf1ff60d59d8c0800000000000000
+      internalID: -3974042911546292648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "trib\xFCn gif_37"
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 6
+        width: 66
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b282a981424de9f0800000000000000
+      internalID: -437620739535633737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "trib\xFCn gif_38"
+      rect:
+        serializedVersion: 2
+        x: 536
+        y: 6
+        width: 66
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6525197563a39a90800000000000000
+      internalID: -7308318114073729683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "trib\xFCn gif_39"
+      rect:
+        serializedVersion: 2
+        x: 602
+        y: 6
+        width: 66
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0cb051e07148b320800000000000000
+      internalID: 2573879140114545679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "trib\xFCn gif_40"
+      rect:
+        serializedVersion: 2
+        x: 801
+        y: 6
+        width: 67
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 451569842f65642b0800000000000000
+      internalID: -5600693487988747948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "trib\xFCn gif_41"
+      rect:
+        serializedVersion: 2
+        x: 867
+        y: 6
+        width: 66
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9a2aee04c35d1b20800000000000000
+      internalID: 3106731419484433054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "trib\xFCn gif_42"
+      rect:
+        serializedVersion: 2
+        x: 933
+        y: 6
+        width: 66
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b635af23c999e6d0800000000000000
+      internalID: -2960666216422361422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      "trib\xFCn gif_0": 6331862279977605672
+      "trib\xFCn gif_1": 5756869943955410162
+      "trib\xFCn gif_10": -1169397881438058444
+      "trib\xFCn gif_11": 3437913068918463575
+      "trib\xFCn gif_12": 7696350417830172485
+      "trib\xFCn gif_13": -5651345410112126741
+      "trib\xFCn gif_14": -8711602260349771243
+      "trib\xFCn gif_15": 602402205576684766
+      "trib\xFCn gif_16": -2794452930520549219
+      "trib\xFCn gif_17": 2900734499512176026
+      "trib\xFCn gif_18": -7500066798635282963
+      "trib\xFCn gif_19": -8316636174216829425
+      "trib\xFCn gif_2": -8489230274062410600
+      "trib\xFCn gif_20": -1148169391725522885
+      "trib\xFCn gif_21": -2011673738163535619
+      "trib\xFCn gif_22": -5244611789398225668
+      "trib\xFCn gif_23": -7896165967268580428
+      "trib\xFCn gif_24": -2858598489394977127
+      "trib\xFCn gif_25": 7537651245690787209
+      "trib\xFCn gif_26": 9062459869106478488
+      "trib\xFCn gif_27": -3947561322398207575
+      "trib\xFCn gif_28": -7744227370439171538
+      "trib\xFCn gif_29": 9159035300120546550
+      "trib\xFCn gif_3": 1263616410730971354
+      "trib\xFCn gif_30": -5780528637613378190
+      "trib\xFCn gif_31": 9176355931228631112
+      "trib\xFCn gif_32": 4004798220868944841
+      "trib\xFCn gif_33": -5108201297470551889
+      "trib\xFCn gif_34": -5175468849268341114
+      "trib\xFCn gif_35": 7890446649632522363
+      "trib\xFCn gif_36": -3974042911546292648
+      "trib\xFCn gif_37": -437620739535633737
+      "trib\xFCn gif_38": -7308318114073729683
+      "trib\xFCn gif_39": 2573879140114545679
+      "trib\xFCn gif_4": -6949086508362329638
+      "trib\xFCn gif_40": -5600693487988747948
+      "trib\xFCn gif_41": 3106731419484433054
+      "trib\xFCn gif_42": -2960666216422361422
+      "trib\xFCn gif_5": 1224140917592950285
+      "trib\xFCn gif_6": 3273684767859191359
+      "trib\xFCn gif_7": -7201220479276741975
+      "trib\xFCn gif_8": -7075084251406482176
+      "trib\xFCn gif_9": -6782152681117127323
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
