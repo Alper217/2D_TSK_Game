@@ -20,9 +20,13 @@ public class GameManager : MonoBehaviour
     public GameObject lifeDisplayPrefab;
     public GameObject scorePopupPrefab;
 
-    // Bunlar SADECE SKOR için kullanýlacak
-    public Transform leftPopupAnchor;
-    public Transform rightPopupAnchor;
+    // --- DEÐÝÞÝKLÝK BURADA ---
+    // Eski anchor'lar yerine tek bir ortak anchor kullanacaðýz.
+    public Transform commonScoreAnchor; // YENÝ: Ortak skorun çýkacaðý nokta
+
+    // public Transform leftPopupAnchor; // ESKÝ: Artýk kullanýlmýyor
+    // public Transform rightPopupAnchor; // ESKÝ: Artýk kullanýlmýyor
+    // -------------------------
 
     void Start()
     {
@@ -31,27 +35,31 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// SKOR POPUP'I ÝÇÝN - ANCHOR KULLANIR
+    /// SKOR POPUP'I ÝÇÝN - ARTIK ORTAK ANCHOR KULLANIR
     /// </summary>
     public void AddPoint(Transform shootingPlayer)
     {
-        string textToShow = ""; // Boþ metinle baþla
-
+        // 1. Skoru artýr
         if (shootingPlayer == playerLeft)
         {
             playerLeftScore++;
-            textToShow = $"{playerLeftScore} - {playerRightScore}";
-
-            // SKOR'u sol 'Anchor'da göster
-            ShowScorePopup(leftPopupAnchor, textToShow);
         }
         else if (shootingPlayer == playerRight)
         {
             playerRightScore++;
-            textToShow = $"{playerLeftScore} - {playerRightScore}";
+        }
 
-            // SKOR'u sað 'Anchor'da göster
-            ShowScorePopup(rightPopupAnchor, textToShow);
+        // 2. Gösterilecek metni oluþtur
+        string textToShow = $"{playerLeftScore} - {playerRightScore}";
+
+        // 3. Skoru YENÝ ortak 'Anchor'da göster
+        if (commonScoreAnchor != null)
+        {
+            ShowScorePopup(commonScoreAnchor, textToShow);
+        }
+        else
+        {
+            Debug.LogWarning("CommonScoreAnchor, GameManager'a atanmamýþ!");
         }
 
         Debug.Log($"SKOR: Sol Oyuncu: {playerLeftScore} - Sað Oyuncu: {playerRightScore}");
@@ -59,22 +67,18 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// CAN BARLARI ÝÇÝN - OYUNCUYU KULLANIR (DÜZELTÝLDÝ)
+    /// CAN BARLARI ÝÇÝN - OYUNCUYU KULLANIR (Bu fonksiyon deðiþmedi)
     /// </summary>
     public void PlayerLosesLife(Transform shootingPlayer)
     {
         if (shootingPlayer == playerLeft)
         {
             playerLeftLives--;
-
-            // CAN BARINI 'Anchor'da DEÐÝL, 'playerLeft' (oyuncunun kendisi) üzerinde göster
             ShowLifeDisplay(playerLeft, playerLeftLives);
         }
         else if (shootingPlayer == playerRight)
         {
             playerRightLives--;
-
-            // CAN BARINI 'Anchor'da DEÐÝL, 'playerRight' (oyuncunun kendisi) üzerinde göster
             ShowLifeDisplay(playerRight, playerRightLives);
         }
 
@@ -82,8 +86,7 @@ public class GameManager : MonoBehaviour
         CheckForWin();
     }
 
-    // Bu fonksiyon hangi 'Transform'u verirsen (ister oyuncu, ister anchor)
-    // onun pozisyonunda kalpleri oluþturur.
+    // Bu fonksiyon deðiþmedi
     void ShowLifeDisplay(Transform positionTransform, int currentLives)
     {
         if (lifeDisplayPrefab == null || mainCanvas == null)
@@ -103,8 +106,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Bu fonksiyon da hangi 'Transform'u verirsen (ister oyuncu, ister anchor)
-    // onun pozisyonunda skoru oluþturur.
+    // Bu fonksiyon da deðiþmedi
     void ShowScorePopup(Transform positionTransform, string text)
     {
         if (scorePopupPrefab == null || mainCanvas == null)
@@ -116,6 +118,8 @@ public class GameManager : MonoBehaviour
         ScorePopup popupScript = popupObject.GetComponent<ScorePopup>();
         if (popupScript != null)
         {
+            // ScorePopup script'i hangi transform'u verirsen onu takip eder.
+            // Bu yüzden "commonScoreAnchor" vermemiz sorunsuz çalýþýr.
             popupScript.Initialize(positionTransform, text);
         }
         else

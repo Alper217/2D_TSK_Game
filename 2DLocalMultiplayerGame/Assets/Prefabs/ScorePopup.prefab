@@ -201,5 +201,5 @@ MonoBehaviour:
   popupText: {fileID: 4216656502308109068}
   displayDuration: 1.5
   fadeOutTime: 0.5
-  offset: {x: 2.5, y: 1, z: 0}
+  offset: {x: -1.5, y: 1, z: 0}
   moveUpSpeed: 0.5
