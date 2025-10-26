@@ -11,6 +11,13 @@ public class Ball : MonoBehaviour
     public Transform lastHolder = null;
     public float damage = 34f;
 
+    // --- SES ALANI ---
+    [Header("Ses")]
+    [Tooltip("Topun bir yere çarptığında çıkaracağı sekme sesi")]
+    public AudioClip bounceSound; // Inspector'dan çarpma sesini buraya sürükle
+    private AudioSource audioSource; // Sesi çalacak bileşen
+    // --- SES ALANI BİTTİ ---
+
     private Rigidbody2D rb;
     private Collider2D ballCollider;
     private GameManager gameManager;
@@ -18,11 +25,23 @@ public class Ball : MonoBehaviour
     private float shootCooldown = 0f;
     public float cooldownTime = 0.5f;
 
+    // --- YENİ EKLENDİ (Tek sekme sesi için) ---
+    [Tooltip("Atıldıktan sonra topun sekip sekmediğini hatırlar")]
+    private bool hasBouncedSinceShot = false;
+    // --- BİTTİ ---
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         ballCollider = GetComponent<Collider2D>();
         gameManager = FindObjectOfType<GameManager>();
+
+        // Objenin üzerindeki AudioSource bileşenini bul ve ata
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            Debug.LogWarning("Bu top prefab'ında AudioSource bileşeni yok! Ses çalamaz.", gameObject);
+        }
     }
 
     void Update()
@@ -51,6 +70,11 @@ public class Ball : MonoBehaviour
         holder = null;
         rb.linearVelocity = direction.normalized * power;
         shootCooldown = cooldownTime;
+
+        // --- YENİ EKLENDİ ---
+        // Top her atıldığında, "henüz sekmedi" olarak hafızasını sıfırla
+        hasBouncedSinceShot = false;
+        // --- BİTTİ ---
     }
 
     void ReenableCollision()
@@ -65,6 +89,23 @@ public class Ball : MonoBehaviour
     // GÜNCELLENDİ: ÇARPIŞMA MANTIĞI
     void OnCollisionEnter2D(Collision2D collision)
     {
+        // --- GÜNCELLENEN SES KODU ---
+        // ŞARTLAR: 
+        // 1. Top tutulmuyor olmalı (!isHeld)
+        // 2. Henüz sekmemiş olmalı (!hasBouncedSinceShot)
+        // 3. Ses bileşenleri atanmış olmalı
+        if (!isHeld && !hasBouncedSinceShot && audioSource != null && bounceSound != null)
+        {
+            // Sesi çal
+            audioSource.PlayOneShot(bounceSound);
+
+            // "Artık sekti" olarak hafızasını işaretle.
+            // Bu sayede bir daha bu bloğa giremeyecek (ta ki tekrar atılana kadar).
+            hasBouncedSinceShot = true;
+        }
+        // --- SES KODU BİTTİ ---
+
+
         // Hedefe çarptı mı?
         if (collision.gameObject.CompareTag("TargetOrb"))
         {
@@ -72,13 +113,10 @@ public class Ball : MonoBehaviour
             if (this.ballType == ElementType.Normal)
             {
                 Debug.Log("Normal top sekti.");
-                // Hiçbir şey yapma ve fonksiyondan çık.
-                // Top yok edilmeyecek, sadece sekecek.
                 return;
             }
 
             // --- Buradan sonrası sadece Element Tipi (Pembe, Mavi, Yeşil) olan toplar için çalışır ---
-
             TargetOrb orb = collision.gameObject.GetComponent<TargetOrb>();
             if (orb == null || lastHolder == null || gameManager == null) return;
 

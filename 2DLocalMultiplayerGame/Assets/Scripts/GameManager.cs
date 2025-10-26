@@ -19,19 +19,41 @@ public class GameManager : MonoBehaviour
     public Transform mainCanvas;
     public GameObject lifeDisplayPrefab;
     public GameObject scorePopupPrefab;
-
-    // --- DEÐÝÞÝKLÝK BURADA ---
-    // Eski anchor'lar yerine tek bir ortak anchor kullanacaðýz.
     public Transform commonScoreAnchor; // YENÝ: Ortak skorun çýkacaðý nokta
 
-    // public Transform leftPopupAnchor; // ESKÝ: Artýk kullanýlmýyor
-    // public Transform rightPopupAnchor; // ESKÝ: Artýk kullanýlmýyor
-    // -------------------------
+    // --- YENÝ SES ALANI ---
+    [Header("Ses Efektleri")]
+    [Tooltip("Sayý alma, can kaybetme gibi efektleri çalacak olan AudioSource")]
+    public AudioSource sfxSource;   // Inspector'dan ikinci AudioSource'u buraya sürükle
+    [Tooltip("Oyuncu sayý kazandýðýnda çalacak ses")]
+    public AudioClip successSound;  // Baþarý ses dosyaný buraya sürükle
+    [Tooltip("Oyuncu can kaybettiðinde çalacak ses")]
+    public AudioClip failureSound;  // Üzülme/can kaybetme ses dosyaný buraya sürükle
+    // (Arka plan müziðini çalan AudioSource'u buraya eklemeye gerek yok, 
+    // o zaten 'Play On Awake' ve 'Loop' ile kendi kendine çalýþacak)
+    // --- SES ALANI BÝTTÝ ---
+
 
     void Start()
     {
         if (ballSpawner == null)
             ballSpawner = FindObjectOfType<BallSpawner>();
+
+        // sfxSource atanmamýþsa, bu objenin üzerindeki (müzik hariç) ikinci AudioSource'u bulmayý dene
+        if (sfxSource == null)
+        {
+            AudioSource[] sources = GetComponents<AudioSource>();
+            if (sources.Length > 1) // 1'den fazla varsa (ilki müzik varsayýlýr)
+            {
+                sfxSource = sources[1]; // Ýkinciyi SFX için kullan
+                Debug.Log("SFX AudioSource otomatik olarak atandý.");
+            }
+            else if (sources.Length > 0) // Sadece 1 tane varsa onu ata ama uyar
+            {
+                sfxSource = sources[0];
+                Debug.LogWarning("GameManager'da sadece 1 AudioSource bulundu. SFX ve Müzik çakýþabilir!");
+            }
+        }
     }
 
     /// <summary>
@@ -48,6 +70,14 @@ public class GameManager : MonoBehaviour
         {
             playerRightScore++;
         }
+
+        // --- YENÝ SES KODU ---
+        // Baþarý sesini çal (PlayOneShot, müziði durdurmadan çalar)
+        if (sfxSource != null && successSound != null)
+        {
+            sfxSource.PlayOneShot(successSound);
+        }
+        // --- SES KODU BÝTTÝ ---
 
         // 2. Gösterilecek metni oluþtur
         string textToShow = $"{playerLeftScore} - {playerRightScore}";
@@ -81,6 +111,14 @@ public class GameManager : MonoBehaviour
             playerRightLives--;
             ShowLifeDisplay(playerRight, playerRightLives);
         }
+
+        // --- YENÝ SES KODU ---
+        // Baþarýsýzlýk/can kaybetme sesini çal
+        if (sfxSource != null && failureSound != null)
+        {
+            sfxSource.PlayOneShot(failureSound);
+        }
+        // --- SES KODU BÝTTÝ ---
 
         Debug.Log($"CAN KAYBEDÝLDÝ! Sol Can: {playerLeftLives} - Sað Can: {playerRightLives}");
         CheckForWin();
