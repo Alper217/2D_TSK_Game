@@ -238,8 +238,8 @@ Transform:
   m_GameObject: {fileID: 108247725}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 1.484, y: -12.0521, z: 0}
-  m_LocalScale: {x: 0.10117832, y: 15.130307, z: 1}
+  m_LocalPosition: {x: 1.4513, y: -12.0521, z: 0}
+  m_LocalScale: {x: 0.10117832, y: 15.065247, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1843754623}
@@ -693,8 +693,8 @@ Transform:
   m_GameObject: {fileID: 205099861}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0244, y: -0.0584, z: 0}
-  m_LocalScale: {x: 0.9801395, y: 1.0302638, z: 0.13379}
+  m_LocalPosition: {x: -0.0244, y: -0.0673, z: 0}
+  m_LocalScale: {x: 0.9801395, y: 1.0326334, z: 0.13379}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1759,8 +1759,8 @@ Transform:
   m_GameObject: {fileID: 1122012597}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.4604, y: -4.4652, z: 0}
-  m_LocalScale: {x: 1.421025, y: 1.4695584, z: 1}
+  m_LocalPosition: {x: 7.4639, y: -4.4679, z: 0}
+  m_LocalScale: {x: 1.4139199, y: 1.464268, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1034959142}
@@ -3054,12 +3054,16 @@ PrefabInstance:
       value: Tribune (2)
       objectReference: {fileID: 0}
     - target: {fileID: 7378335875844024711, guid: ad073a84eefdae147a71cf3b485aedcc, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.57253486
+      objectReference: {fileID: 0}
+    - target: {fileID: 7378335875844024711, guid: ad073a84eefdae147a71cf3b485aedcc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.39639
+      value: 5.3964
       objectReference: {fileID: 0}
     - target: {fileID: 7378335875844024711, guid: ad073a84eefdae147a71cf3b485aedcc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.83066
+      value: -6.1929
       objectReference: {fileID: 0}
     - target: {fileID: 7378335875844024711, guid: ad073a84eefdae147a71cf3b485aedcc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3504,12 +3508,16 @@ PrefabInstance:
       value: Tribune (1)
       objectReference: {fileID: 0}
     - target: {fileID: 7378335875844024711, guid: ad073a84eefdae147a71cf3b485aedcc, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.58554703
+      objectReference: {fileID: 0}
+    - target: {fileID: 7378335875844024711, guid: ad073a84eefdae147a71cf3b485aedcc, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.285
       objectReference: {fileID: 0}
     - target: {fileID: 7378335875844024711, guid: ad073a84eefdae147a71cf3b485aedcc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.73066
+      value: -6.99
       objectReference: {fileID: 0}
     - target: {fileID: 7378335875844024711, guid: ad073a84eefdae147a71cf3b485aedcc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3571,7 +3579,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7378335875844024711, guid: ad073a84eefdae147a71cf3b485aedcc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.01512
+      value: -6.08
       objectReference: {fileID: 0}
     - target: {fileID: 7378335875844024711, guid: ad073a84eefdae147a71cf3b485aedcc, type: 3}
       propertyPath: m_LocalPosition.z
