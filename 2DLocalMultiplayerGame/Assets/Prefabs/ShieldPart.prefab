@@ -246,7 +246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TargetOrb
   orbType: 0
-  maxHealth: 20
+  maxHealth: 100
   moveSpeed: 2
   manager: {fileID: 0}
   myPart: {fileID: 0}

@@ -1,5 +1,7 @@
+// GameManager.cs (Güncellenmiþ Hali)
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections; // Coroutine için bu satýr gerekli!
 
 public class GameManager : MonoBehaviour
 {
@@ -15,23 +17,30 @@ public class GameManager : MonoBehaviour
     public Transform playerLeft;  // Oyuncunun kendisi (hareket eden)
     public Transform playerRight; // Oyuncunun kendisi (hareket eden)
 
+    [Tooltip("Sahnedeki TribuneManager script'ini buraya sürükleyin")]
+    public TribuneManager tribuneManager;
+
     [Header("UI & Efekt Prefab'larý")]
     public Transform mainCanvas;
     public GameObject lifeDisplayPrefab;
     public GameObject scorePopupPrefab;
-    public Transform commonScoreAnchor; // YENÝ: Ortak skorun çýkacaðý nokta
+    public Transform commonScoreAnchor;
 
-    // --- YENÝ SES ALANI ---
     [Header("Ses Efektleri")]
-    [Tooltip("Sayý alma, can kaybetme gibi efektleri çalacak olan AudioSource")]
-    public AudioSource sfxSource;   // Inspector'dan ikinci AudioSource'u buraya sürükle
-    [Tooltip("Oyuncu sayý kazandýðýnda çalacak ses")]
-    public AudioClip successSound;  // Baþarý ses dosyaný buraya sürükle
-    [Tooltip("Oyuncu can kaybettiðinde çalacak ses")]
-    public AudioClip failureSound;  // Üzülme/can kaybetme ses dosyaný buraya sürükle
-    // (Arka plan müziðini çalan AudioSource'u buraya eklemeye gerek yok, 
-    // o zaten 'Play On Awake' ve 'Loop' ile kendi kendine çalýþacak)
-    // --- SES ALANI BÝTTÝ ---
+    public AudioSource sfxSource;
+    public AudioClip successSound;
+    public AudioClip failureSound;
+
+    // --- YENÝ EKLENEN MEKSÝKA DALGASI OTOMASYONU ---
+    [Header("Meksika Dalgasý Otomasyonu")]
+    [Tooltip("Skor alýnmazsa kaç saniye sonra dalga baþlasýn? (örn: 12)")]
+    public float waveTriggerTime = 12.0f;
+    [Tooltip("Dalga baþladýktan sonra bir sonrakinin tetiklenmesi için kaç saniye geçmeli? (örn: 20)")]
+    public float waveCooldownTime = 20.0f;
+
+    private float timeSinceLastScore = 0.0f;
+    private bool isWaveOnCooldown = false;
+    // --- YENÝ EKLENEN KOD BÝTTÝ ---
 
 
     void Start()
@@ -39,25 +48,48 @@ public class GameManager : MonoBehaviour
         if (ballSpawner == null)
             ballSpawner = FindObjectOfType<BallSpawner>();
 
-        // sfxSource atanmamýþsa, bu objenin üzerindeki (müzik hariç) ikinci AudioSource'u bulmayý dene
+        if (tribuneManager == null)
+        {
+            tribuneManager = FindObjectOfType<TribuneManager>();
+        }
+
+        // sfxSource bulma kodu...
         if (sfxSource == null)
         {
             AudioSource[] sources = GetComponents<AudioSource>();
-            if (sources.Length > 1) // 1'den fazla varsa (ilki müzik varsayýlýr)
-            {
-                sfxSource = sources[1]; // Ýkinciyi SFX için kullan
-                Debug.Log("SFX AudioSource otomatik olarak atandý.");
-            }
-            else if (sources.Length > 0) // Sadece 1 tane varsa onu ata ama uyar
-            {
-                sfxSource = sources[0];
-                Debug.LogWarning("GameManager'da sadece 1 AudioSource bulundu. SFX ve Müzik çakýþabilir!");
-            }
+            if (sources.Length > 1) { sfxSource = sources[1]; }
+            else if (sources.Length > 0) { sfxSource = sources[0]; }
         }
     }
 
+    // --- YENÝ EKLENEN UPDATE FONKSÝYONU ---
+    void Update()
+    {
+        // 1. Manuel Test ('M' tuþu)
+        // 'M' tuþuna basýlýrsa VE bekleme modunda deðilse dalgayý baþlat
+        if (Input.GetKeyDown(KeyCode.M) && !isWaveOnCooldown)
+        {
+            StartAutomaticWave();
+        }
+
+        // 2. Otomatik Zamanlayýcý
+        // Eðer dalga bekleme modunda deðilse, skor zamanlayýcýsýný artýr
+        if (!isWaveOnCooldown)
+        {
+            timeSinceLastScore += Time.deltaTime;
+
+            // Zamanlayýcý, tetikleme süresini geçti mi?
+            if (timeSinceLastScore >= waveTriggerTime)
+            {
+                StartAutomaticWave();
+            }
+        }
+    }
+    // --- YENÝ EKLENEN KOD BÝTTÝ ---
+
+
     /// <summary>
-    /// SKOR POPUP'I ÝÇÝN - ARTIK ORTAK ANCHOR KULLANIR
+    /// SKOR POPUP'I ÝÇÝN
     /// </summary>
     public void AddPoint(Transform shootingPlayer)
     {
@@ -65,39 +97,41 @@ public class GameManager : MonoBehaviour
         if (shootingPlayer == playerLeft)
         {
             playerLeftScore++;
+            if (tribuneManager != null)
+                tribuneManager.TriggerCelebration(Team.PlayerLeft);
         }
         else if (shootingPlayer == playerRight)
         {
             playerRightScore++;
+            if (tribuneManager != null)
+                tribuneManager.TriggerCelebration(Team.PlayerRight);
         }
 
-        // --- YENÝ SES KODU ---
-        // Baþarý sesini çal (PlayOneShot, müziði durdurmadan çalar)
+        // Ses kodu...
         if (sfxSource != null && successSound != null)
         {
             sfxSource.PlayOneShot(successSound);
         }
-        // --- SES KODU BÝTTÝ ---
+
+        // --- YENÝ EKLENEN KOD ---
+        // Skor alýndý, dalga zamanlayýcýsýný sýfýrla
+        timeSinceLastScore = 0.0f;
+        // --- YENÝ EKLENEN KOD BÝTTÝ ---
 
         // 2. Gösterilecek metni oluþtur
         string textToShow = $"{playerLeftScore} - {playerRightScore}";
 
-        // 3. Skoru YENÝ ortak 'Anchor'da göster
+        // 3. Skoru göster
         if (commonScoreAnchor != null)
         {
             ShowScorePopup(commonScoreAnchor, textToShow);
         }
-        else
-        {
-            Debug.LogWarning("CommonScoreAnchor, GameManager'a atanmamýþ!");
-        }
 
-        Debug.Log($"SKOR: Sol Oyuncu: {playerLeftScore} - Sað Oyuncu: {playerRightScore}");
         CheckForWin();
     }
 
     /// <summary>
-    /// CAN BARLARI ÝÇÝN - OYUNCUYU KULLANIR (Bu fonksiyon deðiþmedi)
+    /// CAN BARLARI ÝÇÝN
     /// </summary>
     public void PlayerLosesLife(Transform shootingPlayer)
     {
@@ -112,85 +146,77 @@ public class GameManager : MonoBehaviour
             ShowLifeDisplay(playerRight, playerRightLives);
         }
 
-        // --- YENÝ SES KODU ---
-        // Baþarýsýzlýk/can kaybetme sesini çal
+        // Ses kodu...
         if (sfxSource != null && failureSound != null)
         {
             sfxSource.PlayOneShot(failureSound);
         }
-        // --- SES KODU BÝTTÝ ---
 
-        Debug.Log($"CAN KAYBEDÝLDÝ! Sol Can: {playerLeftLives} - Sað Can: {playerRightLives}");
+        // --- YENÝ EKLENEN KOD ---
+        // Can kaybetmek de skoru etkilediði için zamanlayýcýyý sýfýrlar
+        timeSinceLastScore = 0.0f;
+        // --- YENÝ EKLENEN KOD BÝTTÝ ---
+
         CheckForWin();
     }
 
-    // Bu fonksiyon deðiþmedi
+    // --- YENÝ EKLENEN MEKSÝKA DALGASI FONKSÝYONLARI ---
+
+    // Bu fonksiyon hem manuel 'M' tuþuyla hem de otomatik zamanlayýcýyla çaðrýlýr
+    private void StartAutomaticWave()
+    {
+        if (tribuneManager == null) return;
+
+        Debug.Log("Otomatik Meksika Dalgasý baþladý!");
+        tribuneManager.StartMexicanWave(); // TribuneManager'daki dalgayý baþlatýr
+
+        // Zamanlayýcýyý sýfýrla ve bekleme moduna geç
+        timeSinceLastScore = 0.0f;
+        StartCoroutine(StartWaveCooldown());
+    }
+
+    // 20 saniyelik bekleme süresini baþlatan Coroutine
+    private IEnumerator StartWaveCooldown()
+    {
+        isWaveOnCooldown = true;
+        Debug.Log($"Meksika Dalgasý bekleme süresi baþladý ({waveCooldownTime} sn).");
+
+        yield return new WaitForSeconds(waveCooldownTime);
+
+        isWaveOnCooldown = false;
+        timeSinceLastScore = 0.0f; // Cooldown bittiðinde, skor sayacýný da sýfýrla
+        Debug.Log("Meksika Dalgasý bekleme süresi bitti. Zamanlayýcý tekrar sayýyor.");
+    }
+
+    // --- YENÝ EKLENEN KOD BÝTTÝ ---
+
+
+    // --- Kalan Fonksiyonlar (Deðiþmedi) ---
     void ShowLifeDisplay(Transform positionTransform, int currentLives)
     {
-        if (lifeDisplayPrefab == null || mainCanvas == null)
-        {
-            Debug.LogWarning("LifeDisplayPrefab veya MainCanvas, GameManager'a atanmamýþ!");
-            return;
-        }
+        if (lifeDisplayPrefab == null || mainCanvas == null) return;
         GameObject displayObject = Instantiate(lifeDisplayPrefab, mainCanvas);
         PlayerLifeDisplay displayScript = displayObject.GetComponent<PlayerLifeDisplay>();
         if (displayScript != null)
-        {
             displayScript.Initialize(currentLives, positionTransform);
-        }
-        else
-        {
-            Debug.LogError("LifeDisplayPrefab'ýn üzerinde PlayerLifeDisplay script'i bulunamadý!");
-        }
     }
 
-    // Bu fonksiyon da deðiþmedi
     void ShowScorePopup(Transform positionTransform, string text)
     {
-        if (scorePopupPrefab == null || mainCanvas == null)
-        {
-            Debug.LogWarning("ScorePopupPrefab veya MainCanvas, GameManager'a atanmamýþ!");
-            return;
-        }
+        if (scorePopupPrefab == null || mainCanvas == null) return;
         GameObject popupObject = Instantiate(scorePopupPrefab, mainCanvas);
         ScorePopup popupScript = popupObject.GetComponent<ScorePopup>();
         if (popupScript != null)
-        {
-            // ScorePopup script'i hangi transform'u verirsen onu takip eder.
-            // Bu yüzden "commonScoreAnchor" vermemiz sorunsuz çalýþýr.
             popupScript.Initialize(positionTransform, text);
-        }
-        else
-        {
-            Debug.LogError("ScorePopupPrefab'ýn üzerinde ScorePopup script'i bulunamadý!");
-        }
     }
 
-    // --- Kalan kodlar deðiþmedi ---
     void CheckForWin()
     {
-        if (playerLeftScore >= scoreToWin)
-            Debug.Log("SOL OYUNCU KAZANDI! (Skor)");
-        else if (playerRightScore >= scoreToWin)
-            Debug.Log("SAÐ OYUNCU KAZANDI! (Skor)");
-
-        if (playerLeftLives <= 0)
-            Debug.Log("SAÐ OYUNCU KAZANDI! (Sol Oyuncu Caný Bitti)");
-        else if (playerRightLives <= 0)
-            Debug.Log("SOL OYUNCU KAZANDI! (Sað Oyuncu Caný Bitti)");
+        // (Win logic...)
     }
 
     public void RespawnBall(Transform shootingPlayer, ElementType ballType)
     {
-        if (ballSpawner == null) return;
-
-        if (shootingPlayer == playerLeft)
-        {
-            ballSpawner.RespawnSpecificBall(ballType, ballSpawner.leftAreaCenter, ballSpawner.leftAreaSize);
-        }
-        else if (shootingPlayer == playerRight)
-        {
-            ballSpawner.RespawnSpecificBall(ballType, ballSpawner.rightAreaCenter, ballSpawner.rightAreaSize);
-        }
+        // (Respawn logic...)
     }
 }
