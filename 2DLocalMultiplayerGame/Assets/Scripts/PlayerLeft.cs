@@ -27,21 +27,25 @@ public class PlayerLeft : MonoBehaviour
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
+    // PlayerLeft.cs içindeki Update fonksiyonu
     void Update()
     {
         // WASD ile hareket
         float moveX = 0f;
         float moveY = 0f;
 
-        if (Input.GetKey(KeyCode.W)) moveY = 1f;
-        if (Input.GetKey(KeyCode.S)) moveY = -1f;
-        if (Input.GetKey(KeyCode.A)) moveX = -1f;
-        if (Input.GetKey(KeyCode.D)) moveX = 1f;
+        // --- DEĞİŞEN KOD BAŞLANGICI ---
+        // Sabit KeyCode'lar yerine InputManager'ı kullan
+        if (Input.GetKey(InputManager.P1_Up)) moveY = 1f;       // KeyCode.W -> InputManager.P1_Up
+        if (Input.GetKey(InputManager.P1_Down)) moveY = -1f;    // KeyCode.S -> InputManager.P1_Down
+        if (Input.GetKey(InputManager.P1_Left)) moveX = -1f;    // KeyCode.A -> InputManager.P1_Left
+        if (Input.GetKey(InputManager.P1_Right)) moveX = 1f;    // KeyCode.D -> InputManager.P1_Right
+        // --- DEĞİŞEN KOD BİTTİ ---
 
         Vector2 movement = new Vector2(moveX, moveY).normalized * moveSpeed;
         rb.linearVelocity = movement;
 
-        // Pozisyonu s�n�rla
+        // Pozisyonu snrla
         Vector3 pos = transform.position;
         pos.x = Mathf.Clamp(pos.x, minX, maxX);
         pos.y = Mathf.Clamp(pos.y, minY, maxY);
@@ -54,17 +58,19 @@ public class PlayerLeft : MonoBehaviour
         }
         else
         {
-            // Top tutuluyorsa ok g�stergesini g�ster
+            // Top tutuluyorsa ok gstergesini gster
             if (currentAimIndicator == null)
             {
                 ShowAimIndicator();
             }
 
-            // SPACE tu�una bas�nca at
-            if (Input.GetKeyDown(KeyCode.Space))
+            // --- DEĞİŞEN KOD BAŞLANGICI ---
+            // SPACE tuuna basnca at
+            if (Input.GetKeyDown(InputManager.P1_Shoot)) // KeyCode.Space -> InputManager.P1_Shoot
             {
                 ShootBall();
             }
+            // --- DEĞİŞEN KOD BİTTİ ---
         }
     }
 

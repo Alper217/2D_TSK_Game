@@ -27,16 +27,20 @@ public class PlayerRight : MonoBehaviour
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
+    // PlayerRight.cs içindeki Update fonksiyonu
     void Update()
     {
         // WASD ile hareket (sa?daki oyuncu i?in ayn? tu?lar)
         float moveX = 0f;
         float moveY = 0f;
 
-        if (Input.GetKey(KeyCode.UpArrow)) moveY = 1f;
-        if (Input.GetKey(KeyCode.DownArrow)) moveY = -1f;
-        if (Input.GetKey(KeyCode.LeftArrow)) moveX = -1f;
-        if (Input.GetKey(KeyCode.RightArrow)) moveX = 1f;
+        // --- DEĞİŞEN KOD BAŞLANGICI ---
+        // Sabit KeyCode'lar yerine InputManager'ı kullan
+        if (Input.GetKey(InputManager.P2_Up)) moveY = 1f;       // KeyCode.UpArrow -> InputManager.P2_Up
+        if (Input.GetKey(InputManager.P2_Down)) moveY = -1f;    // KeyCode.DownArrow -> InputManager.P2_Down
+        if (Input.GetKey(InputManager.P2_Left)) moveX = -1f;    // KeyCode.LeftArrow -> InputManager.P2_Left
+        if (Input.GetKey(InputManager.P2_Right)) moveX = 1f;    // KeyCode.RightArrow -> InputManager.P2_Right
+        // --- DEĞİŞEN KOD BİTTİ ---
 
         Vector2 movement = new Vector2(moveX, moveY).normalized * moveSpeed;
         rb.linearVelocity = movement;
@@ -60,11 +64,13 @@ public class PlayerRight : MonoBehaviour
                 ShowAimIndicator();
             }
 
+            // --- DEĞİŞEN KOD BAŞLANGICI ---
             // SPACE tu?una bas?nca at
-            if (Input.GetKeyDown(KeyCode.Return))
+            if (Input.GetKeyDown(InputManager.P2_Shoot)) // KeyCode.Return -> InputManager.P2_Shoot
             {
                 ShootBall();
             }
+            // --- DEĞİŞEN KOD BİTTİ ---
         }
     }
 
