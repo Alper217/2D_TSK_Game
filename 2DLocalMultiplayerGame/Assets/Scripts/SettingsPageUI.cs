@@ -77,9 +77,9 @@ public class SettingsPageUI : MonoBehaviour
 
         // --- Slider Fonksiyonlarýný Baðla ---
         // Listener'larý önce temizle ki üst üste eklenmesin
-        masterVolumeSlider.onValueChanged.RemoveAllListeners();
-        musicVolumeSlider.onValueChanged.RemoveAllListeners();
-        effectVolumeSlider.onValueChanged.RemoveAllListeners();
+        //masterVolumeSlider.onValueChanged.RemoveAllListeners();
+        //musicVolumeSlider.onValueChanged.RemoveAllListeners();
+        //effectVolumeSlider.onValueChanged.RemoveAllListeners();
 
         // SettingsManager'daki fonksiyonlarý baðla
         masterVolumeSlider.onValueChanged.AddListener(SettingsManager.Instance.SetMasterVolume);
