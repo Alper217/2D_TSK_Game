@@ -1,7 +1,8 @@
-// GameManager.cs (Güncellenmiþ Hali)
+// GameManager.cs (Güncellenmiþ Tam Hali)
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections; // Coroutine için bu satýr gerekli!
+using System.Collections;
+using UnityEngine.SceneManagement; // <-- YENÝ: Sahne yönetimi için eklendi
 
 public class GameManager : MonoBehaviour
 {
@@ -25,13 +26,13 @@ public class GameManager : MonoBehaviour
     public GameObject lifeDisplayPrefab;
     public GameObject scorePopupPrefab;
     public Transform commonScoreAnchor;
+    public GameOverScreen gameOverScreen; // <-- YENÝ: Oyun sonu ekraný referansý
 
     [Header("Ses Efektleri")]
     public AudioSource sfxSource;
     public AudioClip successSound;
     public AudioClip failureSound;
 
-    // --- YENÝ EKLENEN MEKSÝKA DALGASI OTOMASYONU ---
     [Header("Meksika Dalgasý Otomasyonu")]
     [Tooltip("Skor alýnmazsa kaç saniye sonra dalga baþlasýn? (örn: 12)")]
     public float waveTriggerTime = 12.0f;
@@ -40,11 +41,19 @@ public class GameManager : MonoBehaviour
 
     private float timeSinceLastScore = 0.0f;
     private bool isWaveOnCooldown = false;
-    // --- YENÝ EKLENEN KOD BÝTTÝ ---
 
 
     void Start()
     {
+        // <-- YENÝ: Oyunun donmuþ olmadýðýndan (örn: bir önceki oyundan) emin ol
+        Time.timeScale = 1f;
+
+        // <-- YENÝ: Oyun baþýnda 'Game Over' ekranýný gizle
+        if (gameOverScreen != null)
+        {
+            gameOverScreen.gameObject.SetActive(false);
+        }
+
         if (ballSpawner == null)
             ballSpawner = FindObjectOfType<BallSpawner>();
 
@@ -62,30 +71,25 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // --- YENÝ EKLENEN UPDATE FONKSÝYONU ---
     void Update()
     {
         // 1. Manuel Test ('M' tuþu)
-        // 'M' tuþuna basýlýrsa VE bekleme modunda deðilse dalgayý baþlat
         if (Input.GetKeyDown(KeyCode.M) && !isWaveOnCooldown)
         {
             StartAutomaticWave();
         }
 
         // 2. Otomatik Zamanlayýcý
-        // Eðer dalga bekleme modunda deðilse, skor zamanlayýcýsýný artýr
         if (!isWaveOnCooldown)
         {
             timeSinceLastScore += Time.deltaTime;
 
-            // Zamanlayýcý, tetikleme süresini geçti mi?
             if (timeSinceLastScore >= waveTriggerTime)
             {
                 StartAutomaticWave();
             }
         }
     }
-    // --- YENÝ EKLENEN KOD BÝTTÝ ---
 
 
     /// <summary>
@@ -113,10 +117,8 @@ public class GameManager : MonoBehaviour
             sfxSource.PlayOneShot(successSound);
         }
 
-        // --- YENÝ EKLENEN KOD ---
         // Skor alýndý, dalga zamanlayýcýsýný sýfýrla
         timeSinceLastScore = 0.0f;
-        // --- YENÝ EKLENEN KOD BÝTTÝ ---
 
         // 2. Gösterilecek metni oluþtur
         string textToShow = $"{playerLeftScore} - {playerRightScore}";
@@ -127,7 +129,7 @@ public class GameManager : MonoBehaviour
             ShowScorePopup(commonScoreAnchor, textToShow);
         }
 
-        CheckForWin();
+        CheckForWin(); // <-- ÖNEMLÝ: Puan alýndýktan sonra kazanma durumunu kontrol et
     }
 
     /// <summary>
@@ -152,30 +154,25 @@ public class GameManager : MonoBehaviour
             sfxSource.PlayOneShot(failureSound);
         }
 
-        // --- YENÝ EKLENEN KOD ---
         // Can kaybetmek de skoru etkilediði için zamanlayýcýyý sýfýrlar
         timeSinceLastScore = 0.0f;
-        // --- YENÝ EKLENEN KOD BÝTTÝ ---
 
-        CheckForWin();
+        CheckForWin(); // <-- ÖNEMLÝ: Can kaybettikten sonra kaybetme durumunu kontrol et
     }
 
     // --- YENÝ EKLENEN MEKSÝKA DALGASI FONKSÝYONLARI ---
 
-    // Bu fonksiyon hem manuel 'M' tuþuyla hem de otomatik zamanlayýcýyla çaðrýlýr
     private void StartAutomaticWave()
     {
         if (tribuneManager == null) return;
 
         Debug.Log("Otomatik Meksika Dalgasý baþladý!");
-        tribuneManager.StartMexicanWave(); // TribuneManager'daki dalgayý baþlatýr
+        tribuneManager.StartMexicanWave();
 
-        // Zamanlayýcýyý sýfýrla ve bekleme moduna geç
         timeSinceLastScore = 0.0f;
         StartCoroutine(StartWaveCooldown());
     }
 
-    // 20 saniyelik bekleme süresini baþlatan Coroutine
     private IEnumerator StartWaveCooldown()
     {
         isWaveOnCooldown = true;
@@ -184,14 +181,11 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(waveCooldownTime);
 
         isWaveOnCooldown = false;
-        timeSinceLastScore = 0.0f; // Cooldown bittiðinde, skor sayacýný da sýfýrla
+        timeSinceLastScore = 0.0f;
         Debug.Log("Meksika Dalgasý bekleme süresi bitti. Zamanlayýcý tekrar sayýyor.");
     }
 
-    // --- YENÝ EKLENEN KOD BÝTTÝ ---
-
-
-    // --- Kalan Fonksiyonlar (Deðiþmedi) ---
+    // --- Kalan Fonksiyonlar ---
     void ShowLifeDisplay(Transform positionTransform, int currentLives)
     {
         if (lifeDisplayPrefab == null || mainCanvas == null) return;
@@ -210,13 +204,86 @@ public class GameManager : MonoBehaviour
             popupScript.Initialize(positionTransform, text);
     }
 
-    void CheckForWin()
-    {
-        // (Win logic...)
-    }
-
     public void RespawnBall(Transform shootingPlayer, ElementType ballType)
     {
         // (Respawn logic...)
+        // Bu fonksiyonun içeriði sizde mevcut, o yüzden dokunmadým.
+    }
+
+    // --- YENÝ EKLENEN OYUN SONU FONKSÝYONLARI ---
+
+    /// <summary>
+    /// Oyunun bitip bitmediðini kontrol eder.
+    /// AddPoint ve PlayerLosesLife tarafýndan çaðrýlýr.
+    /// </summary>
+    void CheckForWin()
+    {
+        string winTitle = "";
+        bool gameIsOver = false;
+
+        // Kaybetme koþullarý (canlara göre)
+        if (playerLeftLives <= 0)
+        {
+            winTitle = "PLAYER 2 WINS!";
+            gameIsOver = true;
+        }
+        else if (playerRightLives <= 0)
+        {
+            winTitle = "PLAYER 1 WINS!";
+            gameIsOver = true;
+        }
+        // Kazanma koþullarý (skora göre)
+        else if (playerLeftScore >= scoreToWin)
+        {
+            winTitle = "PLAYER 1 WINS!";
+            gameIsOver = true;
+        }
+        else if (playerRightScore >= scoreToWin)
+        {
+            winTitle = "PLAYER 2 WINS!";
+            gameIsOver = true;
+        }
+
+        // Eðer oyun bittiyse, ilgili fonksiyonu çaðýr
+        if (gameIsOver)
+        {
+            EndGame(winTitle);
+        }
+    }
+
+    /// <summary>
+    /// Oyun bittiðinde çaðrýlýr, her þeyi durdurur ve UI'ý gösterir.
+    /// </summary>
+    void EndGame(string title)
+    {
+        // --- YENÝ EKLENEN KOD BAÞLANGICI ---
+        // Oyunu dondurmadan önce, sahnede kalan tüm popup'larý bul ve yok et.
+
+        // "Popup" etiketine sahip tüm aktif Game Object'leri bir diziye al
+        GameObject[] allPopups = GameObject.FindGameObjectsWithTag("Popup");
+
+        // Bu dizideki her bir objeyi döngüye al
+        foreach (GameObject popup in allPopups)
+        {
+            // Anýnda yok et
+            Destroy(popup);
+        }
+        // --- YENÝ EKLENEN KOD BÝTTÝ ---
+
+
+        // Oyunu dondur (fizik durur, Update'ler yavaþlar)
+        Time.timeScale = 0f;
+
+        // Eðer gameOverScreen atanmýþsa...
+        if (gameOverScreen != null)
+        {
+            // GameOverScreen script'indeki Setup fonksiyonunu çaðýr
+            // ve final skorlarý gönder
+            gameOverScreen.Setup(title, playerLeftScore, playerRightScore);
+        }
+        else
+        {
+            Debug.LogError("Game Over Screen referansý GameManager'da atanmamýþ!");
+        }
     }
 }
