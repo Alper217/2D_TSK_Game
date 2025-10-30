@@ -206,8 +206,16 @@ public class GameManager : MonoBehaviour
 
     public void RespawnBall(Transform shootingPlayer, ElementType ballType)
     {
-        // (Respawn logic...)
-        // Bu fonksiyonun içeriði sizde mevcut, o yüzden dokunmadým.
+        if (ballSpawner == null) return;
+
+        if (shootingPlayer == playerLeft)
+        {
+            ballSpawner.RespawnSpecificBall(ballType, ballSpawner.leftAreaCenter, ballSpawner.leftAreaSize);
+        }
+        else if (shootingPlayer == playerRight)
+        {
+            ballSpawner.RespawnSpecificBall(ballType, ballSpawner.rightAreaCenter, ballSpawner.rightAreaSize);
+        }
     }
 
     // --- YENÝ EKLENEN OYUN SONU FONKSÝYONLARI ---
